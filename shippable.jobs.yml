@@ -4,6 +4,7 @@ jobs:
     steps:
      - IN: ryvr-jobs_master_rSync
      - IN: ryvr_source
+       showBuildStatus: true 
      - TASK: 
        - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew assemble --info
 
@@ -12,6 +13,7 @@ jobs:
     steps:
      - IN: assemble
      - IN: ryvr_source
+       showBuildStatus: true 
      - TASK: 
        - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew unitTest -x jacocoTestReport --info 
-       
+     - OUT: unit-test-report
