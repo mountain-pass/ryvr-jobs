@@ -18,3 +18,14 @@ jobs:
        - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew unitTest -x jacocoTestReport --info -PtestOutputDir=/build/OUT/unit-test-report/
        - script: echo versionName=$RYVR_SOURCE_COMMIT > /build/state/unit-test-report.env
      - OUT: unit-test-report
+     
+  - name: systemTest
+    type: runSh
+    steps:
+     - IN: assemble
+     - IN: ryvr_source
+       showBuildStatus: true 
+     - TASK: 
+       - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew systemTest -x jacocoTestReport -x unitTest --info -PtestOutputDir=/build/OUT/system-test-report/
+       - script: echo versionName=$RYVR_SOURCE_COMMIT > /build/state/system-test-report.env
+     - OUT: system-test-report

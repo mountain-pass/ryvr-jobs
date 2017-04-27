@@ -11,6 +11,14 @@ resources:
       sourceName: build/test-results-ut
     seed:
       versionName: 1.1.1
+
+  - name: system-test-report
+    type: file
+    pointer:
+      sourceName: build/test-results-st
+    seed:
+      versionName: 1.1.1
+
 #
 #  - name: system-test-report
 #    type: file
