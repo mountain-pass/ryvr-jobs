@@ -15,5 +15,6 @@ jobs:
      - IN: ryvr_source
        showBuildStatus: true 
      - TASK: 
-       - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew unitTest -x jacocoTestReport --info 
+       - script: cd ./IN/ryvr_source/gitRepo/ && ./gradlew unitTest -x jacocoTestReport --info -PtestOutputDir=/build/OUT/unit-test-report/
+       - script: echo versionName=$RYVR_SOURCE_COMMIT > /build/state/unit-test-report.env
      - OUT: unit-test-report
